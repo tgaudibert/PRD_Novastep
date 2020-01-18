@@ -7,14 +7,34 @@ var i = []
 
 
 
-
+/*
 bluetooth.connect("B8:27:EB:65:1A:5C", 1, function(err, connection){
   if(err) return console.error(err);
   connection.write(new Buffer('Hello!', 'utf-8'), () => {
     console.log("wrote");
   });
+
 });
 
+*/
+
+bluetooth.connect("B8:27:EB:65:1A:5C", 1, function(err, connection){
+  if(err) return console.error(err);
+
+  connection.on('data', (buffer) => {
+    console.log('received message:', buffer.toString());
+  });
+
+  connection.write(new Buffer('Hello!', 'utf-8'), () => {
+    console.log("wrote");
+  });
+});
+
+
+
+
+
+/*
 device.on('finished',  console.log.bind(console, 'finished'))
 .on('found', function found(address, name){
   console.log('Found: ' + address + ' with name ' + name);
@@ -26,3 +46,4 @@ device.on('finished',  console.log.bind(console, 'finished'))
 
 });
 }).scan();
+*/
