@@ -4,7 +4,7 @@ from bluetooth import *
 # import thread module
 from threading import Thread
 
-print_lock = threading.Lock()
+
 
 # thread function
 def client_thread(c):
