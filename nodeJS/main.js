@@ -7,16 +7,6 @@ var i = []
 
 
 
-/*
-bluetooth.connect("B8:27:EB:65:1A:5C", 1, function(err, connection){
-  if(err) return console.error(err);
-  connection.write(new Buffer('Hello!', 'utf-8'), () => {
-    console.log("wrote");
-  });
-
-});
-
-*/
 
 bluetooth.connect("B8:27:EB:65:1A:5C", 1, function(err, connection){
   if(err) return console.error(err);
