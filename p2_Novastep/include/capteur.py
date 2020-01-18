@@ -35,3 +35,15 @@ def capture_poids():
         GPIO.setwarnings(False)
 
     return poids
+
+
+
+
+def demo_poids():
+    try:
+        poids=2
+    except (KeyboardInterrupt, SystemExit):
+        cleanAndExit()
+        GPIO.setwarnings(False)
+
+    return poids

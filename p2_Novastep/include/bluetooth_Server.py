@@ -1,4 +1,6 @@
 from bluetooth import *
+from capteur import *
+
 
 server_sock=BluetoothSocket( RFCOMM )
 server_sock.bind(("B8:27:EB:65:1A:5C",PORT_ANY))
@@ -19,19 +21,22 @@ advertise_service( server_sock, "SampleServer",
                     )
 
 print ("Waiting for connection on RFCOMM channel %d" % port)
+while True:
+    client_sock, client_info = server_sock.accept()
+    print ("Accepted connection from ", client_info)
 
-client_sock, client_info = server_sock.accept()
-print ("Accepted connection from ", client_info)
+    try:
+        while True:
+            data = client_sock.recv(1024)
+            print(data)
+            Force = demo_poids()
+            client_sock.send(Force)
+            if len(data) == 0: break
+            print ("received [%s]" % data)
+    except IOError:
+        pass
 
-try:
-    while True:
-        data = client_sock.recv(1024)
-        if len(data) == 0: break
-        print ("received [%s]" % data)
-except IOError:
-    pass
-
-print ("disconnected")
+    print ("disconnected")
 
 client_sock.close()
 server_sock.close()
