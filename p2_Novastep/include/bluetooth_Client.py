@@ -10,12 +10,7 @@ import sys
 
 addr = "B8:27:EB:65:1A:5C"
 
-if len(sys.argv) < 2:
-    print "no device specified.  Searching all nearby bluetooth devices for"
-    print "the SampleServer service"
-else:
-    addr = sys.argv[1]
-    print "Searching for SampleServer on %s" % addr
+
 
 # search for the SampleServer service
 uuid = "94f39d29-7d6d-437d-973b-fba39e49d4ee"
