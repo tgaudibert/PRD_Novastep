@@ -1,5 +1,6 @@
 from bluetooth import *
 from capteur import *
+import time
 
 
 server_sock=BluetoothSocket( RFCOMM )
@@ -27,12 +28,9 @@ while True:
 
     try:
         while True:
-            data = client_sock.recv(1024)
-            print(data)
+            time.sleep(0.2)
             Force = demo_poids()
             client_sock.send(Force)
-            if len(data) == 0: break
-            print ("received [%s]" % data)
     except IOError:
         pass
 
