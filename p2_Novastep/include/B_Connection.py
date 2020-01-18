@@ -29,7 +29,7 @@ def CalculForce(Force):
         force+=1
         time.sleep(1)
     print (force)
-    print("Début envoi")
+    print("Debut envoi")
     sock.send("OK")
     sock.close()
 
