@@ -2,13 +2,12 @@
 from bluetooth import *
 
 # import thread module
-from _thread import *
-import threading
+from threading import Thread
 
 print_lock = threading.Lock()
 
 # thread function
-def threaded(c):
+def client_thread(c):
     while True:
 
         # data received from client
@@ -62,7 +61,12 @@ def Main():
         print ("Accepted connection from ", client_info)
 
         # Start a new thread and return its identifier
-        start_new_thread(threaded, (client_sock,))
+        try:
+          Thread(target=client_thread, args=(client_sock,)).start()
+        except:
+          print("Thread did not start.")
+          traceback.print_exc()
+
     s.close()
 
 
