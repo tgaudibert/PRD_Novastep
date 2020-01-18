@@ -1,0 +1,23 @@
+{
+  "name": "prdnovastep",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tgaudibert/PRD_Novastep.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tgaudibert/PRD_Novastep/issues"
+  },
+  "homepage": "https://github.com/tgaudibert/PRD_Novastep#readme",
+  "dependencies": {
+    "noble": "^1.9.1",
+    "node-bluetooth": "^1.2.6"
+  }
+}
