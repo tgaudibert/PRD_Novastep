@@ -8,7 +8,7 @@
 from bluetooth import *
 import sys
 
-addr = "b8-27-eb-65-1a-5c"
+addr = "B8:27:EB:65:1A:5C"
 
 if len(sys.argv) < 2:
     print "no device specified.  Searching all nearby bluetooth devices for"
