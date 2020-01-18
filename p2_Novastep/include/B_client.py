@@ -1,7 +1,7 @@
 import bluetooth
 import time
 
-port = 1
+port = 10000
 sock=bluetooth.BluetoothSocket( bluetooth.RFCOMM )
 sock.connect(("B8:27:EB:65:1A:5C", port))
 
