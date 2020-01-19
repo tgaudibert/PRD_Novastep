@@ -1,55 +1,373 @@
-<!doctype html>
-<html>
-  <head>
-    <title>Monitor ROBOT PRD</title>
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
-      #messages { margin-bottom: 40px }
-    </style>
-  </head>
-  <body>
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
-    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="dist/assets/images/favicon.png">
+    <title>Novastep Monitor</title>
+    <!-- This page CSS -->
+    <!-- chartist CSS -->
+    <link href="dist/assets/node_modules/morrisjs/morris.css" rel="stylesheet">
+    <!--Toaster Popup message CSS -->
+    <link href="dist/assets/node_modules/toast-master/css/jquery.toast.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <!-- Dashboard 1 Page CSS -->
+    <link href="dist/css/pages/dashboard1.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body class="skin-default-dark fixed-layout">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">Novastep</p>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                <!-- ============================================================== -->
+                <!-- Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" >
+                        <!-- Logo icon --><b>
+                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- Dark Logo icon -->
+
+                        </b>
+                        <!--End Logo icon -->
+                        <!-- Logo text --><span>
+                         <!-- dark Logo text -->
+                         </span> </a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-collapse">
+
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav mr-auto">
+                        <!-- This is  -->
+                        <li class="nav-item"> <a class="nav-link nav-toggler d-block d-md-none waves-effect waves-dark" ><i >MENU</i></a> </li>
+
+                        <!-- ============================================================== -->
+                        <!-- Search -->
+                        <!-- ============================================================== -->
+
+
+                    </ul>
+                    <!-- ============================================================== -->
+                    <!-- User profile and search -->
+                    <!-- ============================================================== -->
+
+                        <!-- ============================================================== -->
+                        <!-- End Messages -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- mega menu -->
+                        <!-- ============================================================== -->
+
+                        <!-- ============================================================== -->
+                        <!-- End mega menu -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item right-side-toggle"> <a class="nav-link  waves-effect waves-light" href="javascript:void(0)"><i >STYLE</i></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- User Profile-->
+
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+
+
+                    <ul id="sidebarnav">
+                        <li class="nav-small-cap">--- AVAILABLE DEVICES</li>
+						              <li id="devices">
+
+                          </li>
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+
+                <!-- ============================================================== -->
+                <!-- End Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Info box -->
+                <!-- ============================================================== -->
+                <!-- Row -->
+
+                <div class="row">
+                    <!-- Column -->
+
+                      <!-- Column -->
+                      <div class="col-lg-6 col-md-6">
+                          <div class="card">
+                              <div class="card-body">
+                                  <div class="d-flex flex-row">
+                                      <div class="round align-self-center round-success"></div>
+                                      <div class="m-l-10 align-self-center">
+                                          <h3 id="maxi" >0</h3>
+                                          <h5 class="text-muted m-b-0">Force Maxi</h5></div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- Column -->
+                      <!-- Column -->
+
+                      <!-- Column -->
+                      <!-- Column -->
+                      <div class="col-lg-6 col-md-6" onclick="Clear()">
+                          <div class="card">
+                              <div class="card-body">
+                                  <div class="d-flex flex-row">
+                                      <div class="round align-self-center round-danger"></div>
+                                      <div class="m-l-10 align-self-center">
+                                          <h3 class="m-b-0">reinitialisation</h3>
+                                          <h5 class="text-muted m-b-0">cliquer</h5></div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    <!-- Column -->
+                </div>
+
+                <!-- Row -->
+                <!-- ============================================================== -->
+                <!-- End Info box -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Over Visitor, Our income , slaes different and  sales prediction -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title ">Poids Actuel</h5>
+                                <div id="morris-donut-chart" class="ecomm-donute" style="height: 500px;"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Historique Poids</h5>
+                                <ul class="list-inline text-center">
+                                    <li>
+                                        <h5>Poids</h5>
+                                    </li>
+
+                                </ul>
+                                <div id="morris-area-chart2" style="height: 370px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- ============================================================== -->
+                <!-- Total Leads -->
+                <!-- ============================================================== -->
+                <!-- .row -->
+
+
+                <!-- Right sidebar -->
+                <!-- ============================================================== -->
+                <!-- .right-sidebar -->
+                <div class="right-sidebar">
+                    <div class="slimscrollright">
+                        <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+                        <div class="r-panel-body">
+                            <ul id="themecolors" class="m-t-20">
+                                <li><b>With Light sidebar</b></li>
+                                <li><a href="javascript:void(0)" data-skin="skin-default" class="default-theme">1</a></li>
+                                <li><a href="javascript:void(0)" data-skin="skin-green" class="green-theme">2</a></li>
+                                <li><a href="javascript:void(0)" data-skin="skin-red" class="red-theme">3</a></li>
+                                <li><a href="javascript:void(0)" data-skin="skin-blue" class="blue-theme">4</a></li>
+                                <li><a href="javascript:void(0)" data-skin="skin-purple" class="purple-theme">5</a></li>
+                                <li><a href="javascript:void(0)" data-skin="skin-megna" class="megna-theme">6</a></li>
+
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Right sidebar -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- End footer -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="dist/assets/node_modules/jquery/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap popper Core JavaScript -->
+    <script src="dist/assets/node_modules/popper/popper.min.js"></script>
+    <script src="dist/assets/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="dist/js/perfect-scrollbar.jquery.min.js"></script>
+    <!--Wave Effects -->
+    <script src="dist/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="dist/js/custom.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <!--morris JavaScript -->
+    <script src="dist/assets/node_modules/raphael/raphael-min.js"></script>
+    <script src="dist/assets/node_modules/morrisjs/morris.min.js"></script>
+    <script src="dist/assets/node_modules/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <!-- Popup message jquery -->
+    <script src="dist/assets/node_modules/toast-master/js/jquery.toast.js"></script>
+    <!-- Chart JS -->
+    <script src="dist/assets/node_modules/toast-master/js/jquery.toast.js"></script>
+    <!-- jQuery peity -->
+    <script src="dist/assets/node_modules/peity/jquery.peity.min.js"></script>
+    <script src="dist/assets/node_modules/peity/jquery.peity.init.js"></script>
+
+
     <script src="/socket.io/socket.io.js"></script>
+
+    <script src="dist/js/dashboard1.js"></script>
     <script>
 
+            var poids = [{
+                indice: "0",
+                poids: 0,
+            }]
+            var n = 1
+            area.setData(poids)
 
-      $(function () {
-        var client = io.connect('http://127.0.0.1:3000');
-        client.emit('getDevices',"hello")
-        console.log("hello")
+            var devices = []
 
-        $('form').submit(function(){
-          client.emit('connect_toDevice', $('#m').val());
-          $('#m').val('');
-          return false;
-        });
+            var client = io.connect(window.location.href);
+            client.emit('getDevices',"hello")
 
-
-        client.on('devices', function(data){
-          console.log(data)
-          $('#messages').append($('<li>').text("devices available: " + data));
-          window.scrollTo(0, document.body.scrollHeight);
-        });
+            $(() =>{
 
 
+              client.on('devices', function(data){
+                devices = data
+                $('#devices').empty()
+                for (var i in data){
+                  $('#devices').append($('<a class="waves-effect waves-dark"  aria-expanded="false" onclick="connect('+i+')">').text(data[i].name));
+                }
+              });
 
-        client.on('capteur', function(data){
-          console.log(data)
-          $('#messages').append($('<li>').text('captor data: ' + data));
-          window.scrollTo(0, document.body.scrollHeight);
-        });
-      });
+
+              client.on('capteur', function(data){
+                if(poids[n-1].poids < parseInt(data)){
+                  n = n + 1
+                  poids.push({
+                      indice: n.toString(),
+                      poids: parseInt(data),
+                  })
+                  area.setData(poids)
+                  donutChart.setData([{
+                      label: "poids",
+                      value: parseInt(data),
+                  }])
+                  document.getElementById("maxi").innerHTML = data;
+
+                }
+              });
+            });
+
+
+
+            function Clear(){
+              devices = []
+              $('#devices').empty()
+              client.emit('getDevices',"hello")
+              n = 1
+              poids = [{
+                  indice: "0",
+                  poids: 0,
+              }]
+              area.setData(poids)
+            }
+
+            function connect(i){
+              client.emit('connect_toDevice', devices[i].address);
+            }
+
+            function Disconnect(i){
+              client.emit('disconnect_fromDevice', devices[i].address);
+            }
+
+
+
+
     </script>
-  </body>
+
+</body>
+
 </html>

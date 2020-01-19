@@ -11,9 +11,12 @@ app.use(cors())
 
 app.use('/dist', express.static(__dirname + '/dist'))
 //partie serveur statique
-app.get('/capteur', function(req, res){
-  res.sendFile(__dirname + '/index0.html');
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/index.html');
 });
+
+
+
 
 
 
@@ -52,6 +55,8 @@ io.on('connection',  client => {
 
 
 server.listen( 3000, () => console.log(`App listening on port ${process.env.PORT}!`))
+
+
 
 
 

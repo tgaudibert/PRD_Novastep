@@ -25,7 +25,7 @@ function getDevices(){
     const device = new bluetooth.DeviceINQ();
     device.on('finished',  console.log.bind(console, 'finished'))
       .on('found', function found(address, name){
-        founded.push(address + ' : ' + name)
+        founded.push({address:address,name:name})
         console.log(founded)
         //resolve(founded)
         bluetoothDevice.send_BluetoothDevices(founded)
