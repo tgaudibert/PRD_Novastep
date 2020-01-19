@@ -44,4 +44,3 @@ def cleanAndExit():
 
 def displayMessages(message):
     lcd.message('Force mesuree :\n '+ str(message))
-    print ("force0 : ",force0,", force1 : ",force1)
