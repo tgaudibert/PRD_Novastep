@@ -1,12 +1,8 @@
 from bluetooth import *
 from capteur import *
+from lcd import *
 import time
-import re, uuid
 
-
-
-macadress = ':'.join(re.findall('..', '%012x' % uuid.getnode()))
-print(macadress)
 
 server_sock=BluetoothSocket( RFCOMM )
 server_sock.bind(( "" , PORT_ANY ))
@@ -31,7 +27,8 @@ while True:
     try:
         while True:
             time.sleep(0.2)
-            Force = demo_poids()
+            Force = capture_poids()
+            displayMessages(Force)
             client_sock.send(Force)
     except IOError:
         pass

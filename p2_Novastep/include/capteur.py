@@ -15,9 +15,10 @@ def cleanAndExit():
 
 hx = HX711(5,6)
 hx.set_reading_format("LSB", "MSB")
-hx.set_reference_unit(92)
+hx.set_reference_unit(22.5)
+#hx.set_reference_unit(92)
 
-hx.reset()
+hx.reset()‡
 hx.tare()
 
 #while True:
@@ -26,6 +27,7 @@ def capture_poids():
 
         val = hx.read_long()
         poids=round(abs(val-8334639)/115000.0,3)
+        DATA_TOSEND = str(poids)
 
         hx.power_down()
         hx.power_up()
@@ -34,7 +36,7 @@ def capture_poids():
         cleanAndExit()
         GPIO.setwarnings(False)
 
-    return poids
+    return DATA_TOSEND
 
 
 

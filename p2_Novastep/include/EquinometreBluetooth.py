@@ -1,7 +1,7 @@
 # Uses Bluez for Linux
 #
 # sudo apt-get install bluez python-bluez
-# 
+#
 # Taken from: https://people.csail.mit.edu/albert/bluez-intro/x232.html
 # Taken from: https://people.csail.mit.edu/albert/bluez-intro/c212.html
 
@@ -39,35 +39,35 @@ def cleanAndExit():
 
 def receiveMessages():
     server_sock=BluetoothSocket( RFCOMM )
-  
+
     port = 1
     server_sock.bind(("",port))
     server_sock.listen(1)
-  
+
     client_sock,address = server_sock.accept()
     print "Accepted connection from " + str(address)
-  
+
     data = client_sock.recv(1024)
     print "received [%s]" % data
-  
+
     client_sock.close()
     server_sock.close()
 
     return data
-   
-def capture_poids():    
-    try:        
+
+def capture_poids():
+    try:
 
         val = hx.read_long()
         poids=round(abs(val-8334639)/115000.0,3)
 
         hx.power_down()
         hx.power_up()
-        
+
     except (KeyboardInterrupt, SystemExit):
         cleanAndExit()
         GPIO.setwarnings(False)
-        
+
     return poids
 
 
@@ -75,7 +75,7 @@ def CalculForce(Force):
     port = 1
     sock=BluetoothSocket( RFCOMM )
     sock.connect(('B8:27:EB:1C:4A:98', port))
-    
+
     force0=0
     force1=0
     while (not((int(force1)==int(force0)+1 and Force-0.2<force0 and force0<=Force) or (int(force1)==int(force0)-1 and Force<=force0 and force0<Force+0.2))):
