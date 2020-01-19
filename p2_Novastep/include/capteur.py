@@ -18,7 +18,7 @@ hx.set_reading_format("LSB", "MSB")
 hx.set_reference_unit(22.5)
 #hx.set_reference_unit(92)
 
-hx.reset()‡
+hx.reset()
 hx.tare()
 
 #while True:
