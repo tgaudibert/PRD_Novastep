@@ -9,7 +9,7 @@ macadress = ':'.join(re.findall('..', '%012x' % uuid.getnode()))
 print(macadress)
 
 server_sock=BluetoothSocket( RFCOMM )
-server_sock.bind(( "b8:27:eb:43:18:a9" , PORT_ANY ))
+server_sock.bind(( "" , PORT_ANY ))
 server_sock.listen(10)
 port = server_sock.getsockname()[1]
 

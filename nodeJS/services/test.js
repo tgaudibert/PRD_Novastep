@@ -4,7 +4,7 @@ const device = new bluetooth.DeviceINQ();
 
 var address ="b8-27-eb-43-18-a9"
 
-bluetooth.connect(address, 1,(err, connection)=>{
+bluetooth.connect(address.toUpperCase(), 1,(err, connection)=>{
   if(err) return console.error(err);
 
   connection.on('data', (buffer) => {
@@ -30,6 +30,3 @@ device.on('finished',  console.log.bind(console, 'finished'))
     console.log(address + ' : ' + name)
 
 }).scan();
-
-
-address = "b8:27:eb:bc:e7:56"
