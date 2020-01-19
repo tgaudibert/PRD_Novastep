@@ -6,6 +6,7 @@ import re, uuid
 
 
 macadress = ':'.join(re.findall('..', '%012x' % uuid.getnode()))
+print(macadress)
 
 server_sock=BluetoothSocket( RFCOMM )
 server_sock.bind(( macadress , PORT_ANY ))
