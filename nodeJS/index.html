@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Monitor ROBOT PRD</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages li { padding: 5px 10px; }
+      #messages li:nth-child(odd) { background: #eee; }
+      #messages { margin-bottom: 40px }
+    </style>
+  </head>
+  <body>
+    <ul id="messages"></ul>
+    <form action="">
+      <input id="m" autocomplete="off" /><button>Send</button>
+    </form>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+
+
+      $(function () {
+        var client = io.connect('http://127.0.0.1:3000');
+        client.emit('getDevices',"hello")
+        console.log("hello")
+
+        $('form').submit(function(){
+          client.emit('connect_toDevice', $('#m').val());
+          $('#m').val('');
+          return false;
+        });
+
+
+        client.on('devices', function(data){
+          console.log(data)
+          $('#messages').append($('<li>').text("devices available: " + data));
+          window.scrollTo(0, document.body.scrollHeight);
+        });
+
+
+
+        client.on('capteur', function(data){
+          console.log(data)
+          $('#messages').append($('<li>').text('captor data: ' + data));
+          window.scrollTo(0, document.body.scrollHeight);
+        });
+      });
+    </script>
+  </body>
+</html>
