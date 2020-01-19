@@ -37,16 +37,3 @@ def capture_poids():
         GPIO.setwarnings(False)
 
     return DATA_TOSEND
-
-
-
-
-def demo_poids():
-    try:
-        poids=2
-        DATA_TOSEND = "poids: "+str(poids)
-    except (KeyboardInterrupt, SystemExit):
-        cleanAndExit()
-        GPIO.setwarnings(False)
-
-    return DATA_TOSEND
