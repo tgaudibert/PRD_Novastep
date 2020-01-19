@@ -37,7 +37,7 @@ function getDevices(){
 
 
 function connect(address){
-  bluetooth.connect(address.replace(/-/g,':').toUpperCase(), 1,(err, connection)=>{
+  bluetooth.connect(address.replace(/-/g,':'), 1,(err, connection)=>{
     if(err) return console.error(err);
 
     connection.on('data', (buffer) => {
